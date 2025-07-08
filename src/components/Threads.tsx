@@ -188,25 +188,21 @@ const Threads = ({
       container.addEventListener("mouseleave", handleMouseLeave);
     }
 
-    interface UpdateParams {
-        t: number;
-    }
-
     function update(t: number): void {
-        if (enableMouseInteraction) {
-            const smoothing = 0.05;
-            currentMouse[0] += smoothing * (targetMouse[0] - currentMouse[0]);
-            currentMouse[1] += smoothing * (targetMouse[1] - currentMouse[1]);
-            (program.uniforms.uMouse.value as Float32Array)[0] = currentMouse[0];
-            (program.uniforms.uMouse.value as Float32Array)[1] = currentMouse[1];
-        } else {
-            (program.uniforms.uMouse.value as Float32Array)[0] = 0.5;
-            (program.uniforms.uMouse.value as Float32Array)[1] = 0.5;
-        }
-        (program.uniforms.iTime.value as number) = t * 0.001;
+      if (enableMouseInteraction) {
+        const smoothing = 0.05;
+        currentMouse[0] += smoothing * (targetMouse[0] - currentMouse[0]);
+        currentMouse[1] += smoothing * (targetMouse[1] - currentMouse[1]);
+        (program.uniforms.uMouse.value as Float32Array)[0] = currentMouse[0];
+        (program.uniforms.uMouse.value as Float32Array)[1] = currentMouse[1];
+      } else {
+        (program.uniforms.uMouse.value as Float32Array)[0] = 0.5;
+        (program.uniforms.uMouse.value as Float32Array)[1] = 0.5;
+      }
+      (program.uniforms.iTime.value as number) = t * 0.001;
 
-        renderer.render({ scene: mesh });
-        animationFrameId.current = requestAnimationFrame(update);
+      renderer.render({ scene: mesh });
+      animationFrameId.current = requestAnimationFrame(update);
     }
     animationFrameId.current = requestAnimationFrame(update);
 
