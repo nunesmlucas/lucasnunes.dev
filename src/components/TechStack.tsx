@@ -15,7 +15,7 @@ export const TechStack: React.FC = () => {
   return (
     <section className="max-w-2xl mx-auto px-4 py-12">
       <h2 className="text-2xl font-bold mb-6 text-center">Tech Stack</h2>
-      <div className="flex flex-wrap justify-center gap-3 mt-4">
+      <div className="whitespace-nowrap flex justify-center gap-3 mt-4">
         {tech.map((item) => (
           <span
             key={item}
