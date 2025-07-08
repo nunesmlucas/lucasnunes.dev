@@ -26,7 +26,7 @@ export const Header: React.FC = () => {
           rotateAmplitude={10}
           scaleOnHover={1.1}
           showMobileWarning={false}
-          showTooltip={true}
+          showTooltip={false}
           displayOverlayContent={true}
         />
       </div>
