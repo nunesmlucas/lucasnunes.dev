@@ -7,6 +7,20 @@ export const Header: React.FC = () => {
       <p className="text-lg text-gray-500 dark:text-gray-400">
         Senior Full Stack Engineer · React / Node / TypeScript
       </p>
+      <a
+        href="/resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="btn"
+        onClick={() =>
+          window.gtag?.("event", "click", {
+            event_category: "Resume",
+            event_label: "Resume Button Click",
+          })
+        }
+      >
+        Resume
+      </a>
     </header>
   );
 };
