@@ -22,3 +22,19 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Vercel
+.vercel
+
+# Turbo/Next
+.turbo
+.next
+
+# Temporary files
+.Trash-*
+._*
