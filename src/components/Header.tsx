@@ -1,6 +1,7 @@
 import React from "react";
 import TiltedCard from "./TiltedCard";
 import StarBorder from "./StarBorder";
+import DecryptedText from "./DecryptedText";
 
 export const Header: React.FC = () => {
   return (
@@ -9,7 +10,14 @@ export const Header: React.FC = () => {
       <div className="md:hidden flex flex-col items-center gap-6">
         <h1 className="text-4xl font-bold">Lucas Nunes</h1>
         <p className="text-lg text-gray-500 dark:text-gray-400 text-center">
-          Senior Full Stack Engineer · React / Node / TypeScript
+          <DecryptedText
+            text="Senior Full Stack Engineer · React / Node / TypeScript"
+            animateOn="view"
+            characters="ABCD1234!?"
+            speed={30}
+            sequential={true}
+            revealDirection="start"
+          />
         </p>
         <TiltedCard
           imageSrc="/avatar.jpg"
@@ -62,7 +70,14 @@ export const Header: React.FC = () => {
         <div className="absolute top-0 left-0 h-full w-1/2 flex flex-col justify-center transition-opacity duration-500 ease-in-out group-hover:opacity-0 z-10 px-4">
           <h1 className="text-4xl font-bold mb-2">Lucas Nunes</h1>
           <p className="text-lg text-gray-500 dark:text-gray-400 mb-4">
-            Senior Full Stack Engineer · React / Node / TypeScript
+            <DecryptedText
+              text="Senior Full Stack Engineer · React / Node / TypeScript"
+              animateOn="view"
+              characters="ABCD1234!?"
+              speed={30}
+              sequential={true}
+              revealDirection="start"
+            />
           </p>
         </div>
 
