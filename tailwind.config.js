@@ -4,6 +4,11 @@ module.exports = {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  safelist: [
+    'auto-open:translate-x-[-120%]',
+    'auto-open:translate-x-0',
+    'auto-open:opacity-0',
+  ],
   theme: {
     extend: {
       animation: {

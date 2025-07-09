@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TiltedCard from "./TiltedCard";
 import StarBorder from "./StarBorder";
 import DecryptedText from "./DecryptedText";
 
 export const Header: React.FC = () => {
+  const [autoOpen, setAutoOpen] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.innerWidth >= 768) {
+      const timeout = setTimeout(() => {
+        setAutoOpen(true);
+      }, 4000);
+      return () => clearTimeout(timeout);
+    }
+  }, []);
+
   return (
-    <header className="relative group w-full max-w-5xl mx-auto px-4 py-16 h-auto md:h-[340px] flex flex-col md:flex-row items-center justify-between text-center md:text-left overflow-hidden">
+    <header
+      className={`relative group w-full max-w-5xl mx-auto px-4 py-16 h-auto md:h-[340px] flex flex-col md:flex-row items-center justify-between text-center md:text-left overflow-hidden ${
+        autoOpen ? "auto-open" : ""
+      }`}
+      onMouseLeave={() => setAutoOpen(false)}
+    >
       {/* Mobile Static Layout */}
       <div className="md:hidden flex flex-col items-center gap-6">
         <h1 className="text-4xl font-bold">Lucas Nunes</h1>
@@ -67,7 +83,7 @@ export const Header: React.FC = () => {
       {/* Desktop Animated Layout */}
       <div className="hidden md:flex w-full h-full relative">
         {/* Left: Name + Title */}
-        <div className="absolute top-0 left-0 h-full w-1/2 flex flex-col justify-center transition-opacity duration-500 ease-in-out group-hover:opacity-0 z-10 px-4">
+        <div className="absolute top-0 left-0 h-full w-1/2 flex flex-col justify-center transition-opacity duration-500 ease-in-out group-hover:opacity-0 group-[.auto-open]:opacity-0 z-10 px-4">
           <h1 className="text-4xl font-bold mb-2">Lucas Nunes</h1>
           <p className="text-lg text-gray-500 dark:text-gray-400 mb-4">
             <DecryptedText
@@ -82,7 +98,7 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Center: Avatar */}
-        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 transition-transform duration-500 ease-in-out group-hover:translate-x-[-120%] z-20 w-1/2 flex justify-center">
+        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 transition-transform duration-500 ease-in-out group-hover:translate-x-[-120%] group-[.auto-open]:translate-x-[-120%] z-20 w-1/2 flex justify-center">
           <TiltedCard
             imageSrc="/avatar.jpg"
             altText="Lucas Avatar"
@@ -100,7 +116,7 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Right: About Me */}
-        <div className="absolute right-0 top-1/2 transform translate-x-[100%] -translate-y-1/2 transition-transform duration-500 ease-in-out group-hover:translate-x-0 z-20 w-1/2 flex justify-center">
+        <div className="absolute right-0 top-1/2 transform translate-x-[100%] -translate-y-1/2 transition-transform duration-500 ease-in-out group-hover:translate-x-0 group-[.auto-open]:translate-x-0 z-20 w-1/2 flex justify-center">
           <div className="relative h-full w-full px-6 py-8 flex flex-col justify-between max-w-md">
             <h2 className="text-2xl font-bold mb-2">About Me</h2>
             <p className="text-gray-400 dark:text-gray-300 mb-4">
