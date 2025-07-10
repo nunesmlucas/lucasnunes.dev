@@ -15,6 +15,17 @@ export const Header: React.FC = () => {
     }
   }, []);
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    window.gtag?.("event", "resume_click", {
+      event_category: "Resume",
+      event_label: "Resume Button Click",
+    });
+    setTimeout(() => {
+      window.open("/resume.pdf", "_blank");
+    }, 300); // Give GA time to fire
+  };
+
   return (
     <header
       className={`relative group w-full max-w-5xl mx-auto px-4 py-16 h-auto md:h-[340px] flex flex-col md:flex-row items-center justify-between text-center md:text-left overflow-hidden ${
@@ -67,12 +78,7 @@ export const Header: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="btn"
-              onClick={() =>
-                window.gtag?.("event", "click", {
-                  event_category: "Resume",
-                  event_label: "Resume Button Click",
-                })
-              }
+              onClick={handleClick}
             >
               Resume
             </a>
@@ -137,12 +143,7 @@ export const Header: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn"
-                  onClick={() =>
-                    window.gtag?.("event", "click", {
-                      event_category: "Resume",
-                      event_label: "Resume Button Click",
-                    })
-                  }
+                  onClick={handleClick}
                 >
                   Resume
                 </a>

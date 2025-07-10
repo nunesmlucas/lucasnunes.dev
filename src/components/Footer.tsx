@@ -1,11 +1,12 @@
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export const Footer: React.FC = () => {
-  const trackClick = (label: string) => {
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "click", {
-        event_category: "Outbound Link",
-        event_label: label,
+  const trackClick = (platform: string) => {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "footer_link_click", {
+        event_category: "Footer",
+        event_label: platform,
+        value: 1,
       });
     }
   };
